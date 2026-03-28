@@ -30,25 +30,25 @@ export default function MatchesPage() {
     }
   }, [session])
 
-  if (!session) return <div className="text-center py-20">請先登入</div>
+  if (!session) return <div className="text-center py-20">请先登录</div>
 
-  if (loading) return <div className="text-center py-20">分析配對中...</div>
+  if (loading) return <div className="text-center py-20">分析匹配中...</div>
 
   if (matches.length === 0) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         <Heart className="w-16 h-16 mx-auto mb-4" style={{ color: "#FFE8ED" }} />
-        <h2 className="text-xl font-bold mb-2">還沒有配對推薦</h2>
-        <p className="text-gray-500 mb-6">完成心理測驗後，我們會為你推薦最契合的對象</p>
-        <a href="/quizzes" className="inline-block px-6 py-3 rounded-xl text-white font-medium" style={{ backgroundColor: "#FF6B8A" }}>去做測驗</a>
+        <h2 className="text-xl font-bold mb-2">还没有匹配推荐</h2>
+        <p className="text-gray-500 mb-6">完成心理学测验后，我们会为你推荐最契合的对象</p>
+        <a href="/quizzes" className="inline-block px-6 py-3 rounded-xl text-white font-medium" style={{ backgroundColor: "#FF6B8A" }}>去做测验</a>
       </div>
     )
   }
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-2">每日推薦</h1>
-      <p className="text-gray-500 mb-8">根據心理測驗結果，為你推薦最契合的對象</p>
+      <h1 className="text-2xl font-bold mb-2">每日推荐</h1>
+      <p className="text-gray-500 mb-8">根据心理学测验结果，为你推荐最契合的对象</p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {matches.map(m => (
@@ -63,7 +63,7 @@ export default function MatchesPage() {
             </div>
             <div className="p-5">
               <h3 className="font-bold text-lg">{m.name}</h3>
-              <p className="text-gray-500 text-sm">{m.age ? `${m.age}歲` : ""} {m.location && `· ${m.location}`}</p>
+              <p className="text-gray-500 text-sm">{m.age ? `${m.age}岁` : ""} {m.location && `· ${m.location}`}</p>
               {m.occupation && <p className="text-gray-400 text-sm">{m.occupation}</p>}
               {m.bio && <p className="text-gray-500 text-sm mt-2 line-clamp-2">{m.bio}</p>}
 
@@ -72,7 +72,7 @@ export default function MatchesPage() {
                 <div className="mt-4 space-y-2">
                   {Object.entries(m.dimensions).map(([key, val]) => (
                     <div key={key} className="flex items-center gap-2 text-xs">
-                      <span className="w-16 text-gray-400">{key === "bigfive" ? "人格" : key === "lovelanguage" ? "愛之語" : key === "travel" ? "旅伴" : "婚姻"}</span>
+                      <span className="w-16 text-gray-400">{key === "bigfive" ? "人格" : key === "lovelanguage" ? "爱的语言" : key === "travel" ? "旅伴" : "婚姻"}</span>
                       <div className="flex-1 bg-gray-100 rounded-full h-1.5">
                         <div className="h-1.5 rounded-full" style={{ width: `${val}%`, backgroundColor: "#FF6B8A" }} />
                       </div>
@@ -83,7 +83,7 @@ export default function MatchesPage() {
               )}
 
               <div className="mt-4 flex gap-2">
-                <button onClick={() => setSelected(m)} className="flex-1 py-2 rounded-xl text-sm font-medium border border-gray-200 hover:border-pink-200 transition">查看詳情</button>
+                <button onClick={() => setSelected(m)} className="flex-1 py-2 rounded-xl text-sm font-medium border border-gray-200 hover:border-pink-200 transition">查看详情</button>
                 <button className="px-4 py-2 rounded-xl text-sm font-medium text-white" style={{ backgroundColor: "#FF6B8A" }}>♥</button>
               </div>
             </div>
@@ -100,22 +100,22 @@ export default function MatchesPage() {
                 <div className="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center text-2xl font-bold" style={{ color: "#FF6B8A" }}>{selected.name[0]}</div>
                 <div>
                   <h2 className="font-bold text-xl">{selected.name}</h2>
-                  <p className="text-gray-500">{selected.age}歲 {selected.location && `· ${selected.location}`}</p>
+                  <p className="text-gray-500">{selected.age}岁 {selected.location && `· ${selected.location}`}</p>
                 </div>
               </div>
               <button onClick={() => setSelected(null)} className="text-gray-400"><X className="w-5 h-5" /></button>
             </div>
             {selected.bio && <p className="text-gray-600 mb-4">{selected.bio}</p>}
-            {selected.occupation && <p className="text-sm text-gray-500 mb-4">職業：{selected.occupation}</p>}
+            {selected.occupation && <p className="text-sm text-gray-500 mb-4">职业：{selected.occupation}</p>}
 
             <div className="mb-4 p-4 bg-pink-50 rounded-xl">
-              <h3 className="font-bold mb-2" style={{ color: "#FF6B8A" }}>配對分析</h3>
+              <h3 className="font-bold mb-2" style={{ color: "#FF6B8A" }}>匹配分析</h3>
               <div className="text-3xl font-bold" style={{ color: "#FF6B8A" }}>{selected.score}%</div>
-              <p className="text-sm text-gray-500 mt-1">整體匹配度</p>
+              <p className="text-sm text-gray-500 mt-1">整体匹配度</p>
             </div>
 
             <button className="w-full py-3 rounded-xl text-white font-medium flex items-center justify-center gap-2" style={{ backgroundColor: "#FF6B8A" }}>
-              <MessageCircle className="w-5 h-5" /> 發送見面邀請
+              <MessageCircle className="w-5 h-5" /> 发送见面邀请
             </button>
           </div>
         </div>

@@ -38,7 +38,7 @@ export default function ChatPage() {
   useEffect(() => {
     if (activeChat) {
       setMessages([
-        { id: "1", content: "嗨，很高興配對成功！", senderId: "other", createdAt: new Date().toISOString() },
+        { id: "1", content: "嗨，很高興匹配成功！", senderId: "other", createdAt: new Date().toISOString() },
         { id: "2", content: "你好呀！很高興認識你 😊", senderId: (session?.user as any)?.id || "", createdAt: new Date().toISOString() },
       ])
     }
@@ -53,12 +53,12 @@ export default function ChatPage() {
 
     // Simulate reply
     setTimeout(() => {
-      const replies = ["好的 👍", "我也是這麼想的！", "哈哈太有趣了", "那我們約週末見面？"]
+      const replies = ["好的 👍", "我也是这麼想的！", "哈哈太有趣了", "那我們约周末見面？"]
       setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), content: replies[Math.floor(Math.random() * replies.length)], senderId: activeChat!, createdAt: new Date().toISOString() }])
     }, 1500)
   }
 
-  if (!session) return <div className="text-center py-20">請先登入</div>
+  if (!session) return <div className="text-center py-20">请先登录</div>
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -67,9 +67,9 @@ export default function ChatPage() {
       <div className="flex gap-4 h-[calc(100vh-200px)]">
         {/* Chat list */}
         <div className="w-full md:w-80 border border-gray-100 rounded-2xl overflow-hidden flex flex-col">
-          <div className="p-4 border-b border-gray-100 font-medium text-gray-500">對話列表</div>
+          <div className="p-4 border-b border-gray-100 font-medium text-gray-500">对话列表</div>
           {chatList.length === 0 ? (
-            <div className="flex-1 flex items-center justify-center text-gray-400 text-sm p-4 text-center">還沒有對話，先去配對頁面發送邀請吧！</div>
+            <div className="flex-1 flex items-center justify-center text-gray-400 text-sm p-4 text-center">还没有对话，先去匹配页面发送邀请吧！</div>
           ) : (
             chatList.map(chat => (
               <button key={chat.id} onClick={() => setActiveChat(chat.id)}
@@ -112,7 +112,7 @@ export default function ChatPage() {
             <div className="p-4 border-t border-gray-100 flex gap-2">
               <input type="text" value={newMsg} onChange={e => setNewMsg(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && sendMessage()}
-                placeholder="輸入訊息..."
+                placeholder="输入消息..."
                 className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 text-sm" />
               <button onClick={sendMessage} className="px-4 py-3 rounded-xl text-white transition hover:opacity-90" style={{ backgroundColor: "#FF6B8A" }}>
                 <Send className="w-5 h-5" />
@@ -120,7 +120,7 @@ export default function ChatPage() {
             </div>
           </div>
         ) : (
-          <div className="hidden md:flex flex-1 items-center justify-center text-gray-400">選擇一個對話開始聊天</div>
+          <div className="hidden md:flex flex-1 items-center justify-center text-gray-400">选择一个对话开始聊天</div>
         )}
       </div>
     </div>
