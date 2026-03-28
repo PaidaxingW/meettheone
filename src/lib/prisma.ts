@@ -2,8 +2,12 @@ import { PrismaClient } from '@prisma/client'
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient | null }
 
+// Defaults for local dev when no env vars set
 if (!process.env.DATABASE_URL) {
-  process.env.DATABASE_URL = "postgresql://user:pass@localhost:5432/meettheone"
+  process.env.DATABASE_URL = "file:./dev.db"
+}
+if (!process.env.DATABASE_PROVIDER) {
+  process.env.DATABASE_PROVIDER = "sqlite"
 }
 
 export const prisma = globalForPrisma.prisma || new PrismaClient()

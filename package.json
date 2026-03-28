@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/prisma-setup.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "node scripts/prisma-setup.js",
+    "db:generate": "node scripts/prisma-setup.js",
+    "db:push": "node scripts/prisma-setup.js --push"
   },
   "dependencies": {
     "next": "14.2.29",
