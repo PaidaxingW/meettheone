@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { SessionProvider } from "next-auth/react"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
 import Navbar from "@/components/Navbar"
 
 export const metadata: Metadata = {
@@ -11,8 +9,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions)
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-TW">
       <head>
@@ -20,8 +17,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta name="theme-color" content="#FF6B8A" />
       </head>
       <body className="min-h-screen bg-white">
-        <SessionProvider session={session}>
-          <Navbar session={session} />
+        <SessionProvider>
+          <Navbar />
           <main>{children}</main>
           <footer className="bg-gray-50 py-8 text-center text-sm text-gray-500 border-t mt-16">
             <p>© 2026 MeetTheOne. 用心理學，找到對的人。</p>

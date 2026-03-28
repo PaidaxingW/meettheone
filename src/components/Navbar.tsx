@@ -4,7 +4,7 @@ import { useSession, signOut } from "next-auth/react"
 import { Heart, Menu, X } from "lucide-react"
 import { useState } from "react"
 
-export default function Navbar({ session }: { session: any }) {
+export default function Navbar() {
   const { data } = useSession()
   const [open, setOpen] = useState(false)
 
