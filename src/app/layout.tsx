@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import { SessionProvider } from "next-auth/react"
 import Navbar from "@/components/Navbar"
 
 export const metadata: Metadata = {
@@ -17,13 +16,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#FF6B8A" />
       </head>
       <body className="min-h-screen bg-white">
-        <SessionProvider>
-          <Navbar />
-          <main>{children}</main>
-          <footer className="bg-gray-50 py-8 text-center text-sm text-gray-500 border-t mt-16">
-            <p>© 2026 MeetTheOne. 用心理學，找到對的人。</p>
-          </footer>
-        </SessionProvider>
+        <Navbar />
+        <main>{children}</main>
+        <footer className="bg-gray-50 py-8 text-center text-sm text-gray-500 border-t mt-16">
+          <p>© 2026 MeetTheOne. 用心理學，找到對的人。</p>
+        </footer>
       </body>
     </html>
   )
