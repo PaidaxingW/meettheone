@@ -2,9 +2,8 @@ import { PrismaClient } from '@prisma/client'
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient | null }
 
-// Ensure DATABASE_URL exists for PrismaClient construction
 if (!process.env.DATABASE_URL) {
-  process.env.DATABASE_URL = "postgresql://placeholder:placeholder@localhost:5432/placeholder"
+  process.env.DATABASE_URL = "postgresql://user:pass@localhost:5432/meettheone"
 }
 
 export const prisma = globalForPrisma.prisma || new PrismaClient()
