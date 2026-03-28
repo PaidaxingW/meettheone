@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://meettheone.app/sitemap.xml
+
+User-agent: *
+Disallow: /chat/
+Disallow: /api/

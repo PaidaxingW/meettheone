@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-pink-50 to-white py-20 md:py-32">
+      <section aria-label="欢迎横幅" className="relative overflow-hidden bg-gradient-to-br from-pink-50 to-white py-20 md:py-32">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-50 text-sm font-medium mb-6" style={{ color: "#FF6B8A" }}>
             <Star className="w-4 h-4 fill-current" /> 心理学驱动 · 科学交友
@@ -28,7 +28,7 @@ export default function Home() {
             找到<span style={{ color: "#FF6B8A" }}>对的人</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-            MeetTheOne 运用心理学量表與 AI 算法，帮你找到真正契合的另一半。<br />
+            MeetTheOne 觅得运用心理学量表與 AI 算法，帮你找到真正契合的另一半。<br />
             不只是條件匹配，更是心靈相通。
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -46,9 +46,9 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section className="py-20 bg-white">
+      <section aria-label="平台特色" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">为什么选择 MeetTheOne？</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">为什么选择 MeetTheOne 觅得？</h2>
           <p className="text-gray-500 text-center mb-12 max-w-xl mx-auto">我们相信，好的关系建立在深入了解之上</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((f, i) => (
@@ -65,7 +65,7 @@ export default function Home() {
       </section>
 
       {/* How it works */}
-      <section className="py-20 bg-gray-50">
+      <section aria-label="使用流程" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">三步找到真爱</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -85,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* Success Stories */}
-      <section className="py-20 bg-white">
+      <section aria-label="成功故事" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">幸福见证</h2>
           <p className="text-gray-500 text-center mb-12">真实会员的爱情故事</p>
@@ -105,13 +105,33 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-20">
+      <section aria-label="行动号召" className="py-20">
         <div className="max-w-4xl mx-auto px-4 text-center rounded-3xl p-12" style={{ backgroundColor: "#FF6B8A" }}>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">准备好找到对的人了吗？</h2>
-          <p className="text-pink-100 text-lg mb-8">加入 MeetTheOne，让心理学为你的爱情之路点亮明灯</p>
+          <p className="text-pink-100 text-lg mb-8">加入 MeetTheOne 觅得，让心理学为你的爱情之路点亮明灯</p>
           <Link href="/register" className="inline-flex items-center gap-2 px-8 py-4 bg-white rounded-full text-lg font-medium transition hover:bg-gray-50" style={{ color: "#FF6B8A" }}>
             免费开始 <ArrowRight className="w-5 h-5" />
           </Link>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section aria-label="关于觅得" className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 text-gray-600 text-sm leading-relaxed space-y-6">
+          <h2 className="text-2xl font-bold text-gray-800 text-center mb-8">关于觅得 MeetTheOne — 专注心理学相亲交友</h2>
+          <p>
+            <strong>觅得（MeetTheOne）</strong>是一款基于心理学原理打造的严肃交友平台，致力于帮助单身男女通过科学的方式找到真正契合的另一半。与传统相亲网站仅凭年龄、学历、收入等外在条件进行匹配不同，觅得更关注用户的内在契合度。
+          </p>
+          <p>
+            我们采用国际认可的心理学量表，包括<strong>大五人格测验（Big Five）</strong>、<strong>爱之语（Love Languages）</strong>、旅伴测验和婚姻价值观问卷，全方位了解每位用户的性格特质、沟通方式、价值观和生活方式。通过 AI 智能配对算法，兼顾相似性吸引与互补性需求，每日为用户推荐最契合的优质对象。
+          </p>
+          <p>
+            无论你是正在<strong>找对象</strong>的单身青年，还是希望通过更科学的方式进行<strong>婚恋交友</strong>的都市白领，觅得都能为你提供个性化的匹配服务。在觅得，每一段关系都始于深入了解，每一次推荐都经过心理学验证。加入我们，让<strong>心理测试</strong>和<strong>智能配对</strong>帮你找到那个对的人。
+          </p>
+          <h3 className="text-xl font-bold text-gray-800 pt-4">觅得的心理学交友优势</h3>
+          <p>
+            心理学交友已经被大量学术研究证明是提升约会质量的科学方法。觅得将大五人格的开放性、尽责性、外向性、宜人性和神经质五个维度纳入匹配模型，同时结合爱之语的五种表达方式，让匹配结果更加精准。我们的用户反馈显示，通过心理学匹配的伴侣，关系满意度和长期稳定性都显著高于传统方式。
+          </p>
         </div>
       </section>
     </div>

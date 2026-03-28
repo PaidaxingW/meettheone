@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold" style={{ color: "#FF6B8A" }}>
-          <Heart className="w-6 h-6 fill-current" /> MeetTheOne
+          <Heart className="w-6 h-6 fill-current" /> MeetTheOne 觅得
         </Link>
 
         {/* Desktop */}
