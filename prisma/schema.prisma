@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String?
+  image         String?
+  gender        String?   // male, female
+  birthDate     DateTime?
+  height        Int?
+  occupation    String?
+  education     String?
+  income        String?
+  location      String?
+  bio           String?
+  lookingFor    String?   // JSON string for preferences
+  membership    String    @default("free") // free, premium
+  role          String    @default("user")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  photos        Photo[]
+  quizResults   QuizResult[]
+  matchesInitiated Match[] @relation("MatchInitiator")
+  matchesReceived  Match[] @relation("MatchReceiver")
+  sentMessages     Message[] @relation("MessageSender")
+  receivedMessages Message[] @relation("MessageReceiver")
+  dateRequests     DateRequest[] @relation("DateRequester")
+  dateResponses    DateRequest[] @relation("DateResponder")
+  posts            CommunityPost[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Photo {
+  id        String   @id @default(cuid())
+  url       String
+  userId    String
+  approved  Boolean  @default(false)
+  order     Int      @default(0)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model QuizResult {
+  id        String   @id @default(cuid())
+  userId    String
+  quizType  String   // bigfive, lovelanguage, travel, marriage
+  scores    String   // JSON
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Match {
+  id             String   @id @default(cuid())
+  initiatorId    String
+  receiverId     String
+  score          Float    @default(0)
+  status         String   @default("pending") // pending, accepted, rejected, expired
+  initiator      User     @relation("MatchInitiator", fields: [initiatorId], references: [id])
+  receiver       User     @relation("MatchReceiver", fields: [receiverId], references: [id])
+  createdAt      DateTime @default(now())
+  expiresAt      DateTime?
+  messages       Message[]
+
+  @@unique([initiatorId, receiverId])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  senderId  String
+  receiverId String
+  matchId   String
+  read      Boolean  @default(false)
+  sender    User     @relation("MessageSender", fields: [senderId], references: [id])
+  receiver  User     @relation("MessageReceiver", fields: [receiverId], references: [id])
+  match     Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model DateRequest {
+  id            String   @id @default(cuid())
+  matchId       String
+  requesterId   String
+  responderId   String
+  proposedTime  DateTime?
+  proposedPlace String?
+  status        String   @default("pending") // pending, confirmed, rejected
+  requester     User     @relation("DateRequester", fields: [requesterId], references: [id])
+  responder     User     @relation("DateResponder", fields: [responderId], references: [id])
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime?
+}
+
+model CommunityPost {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  likes     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
