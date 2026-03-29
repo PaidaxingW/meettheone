@@ -35,7 +35,7 @@ export default function Home() {
             <Link href="/register" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white text-lg font-medium transition hover:opacity-90 shadow-lg hover:shadow-xl" style={{ backgroundColor: "#FF6B8A" }}>
               开始寻找另一半 <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link href="/quizzes" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 text-lg font-medium transition hover:bg-gray-50" style={{ borderColor: "#FF6B8A", color: "#FF6B8A" }}>
+            <Link href="/assessment" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 text-lg font-medium transition hover:bg-gray-50" style={{ borderColor: "#FF6B8A", color: "#FF6B8A" }}>
               先做测验
             </Link>
           </div>

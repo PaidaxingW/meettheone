@@ -21,7 +21,7 @@ export default function Navbar() {
             <>
               <Link href="/matches" className="text-gray-600 hover:text-[#FF6B8A] transition">匹配</Link>
               <Link href="/chat" className="text-gray-600 hover:text-[#FF6B8A] transition">聊天</Link>
-              <Link href="/quizzes" className="text-gray-600 hover:text-[#FF6B8A] transition">测验</Link>
+              <Link href="/assessment" className="text-gray-600 hover:text-[#FF6B8A] transition">心理评估</Link>
               <Link href="/dashboard" className="text-gray-600 hover:text-[#FF6B8A] transition">分析</Link>
               <Link href="/community" className="text-gray-600 hover:text-[#FF6B8A] transition">社区</Link>
               <Link href="/profile" className="text-gray-600 hover:text-[#FF6B8A] transition">个人</Link>
@@ -50,7 +50,7 @@ export default function Navbar() {
               {[
                 { href: "/matches", label: "匹配" },
                 { href: "/chat", label: "聊天" },
-                { href: "/quizzes", label: "测验" },
+                { href: "/assessment", label: "心理评估" },
                 { href: "/dashboard", label: "分析" },
                 { href: "/community", label: "社区" },
                 { href: "/profile", label: "个人" },
