@@ -10,9 +10,9 @@ import {
   SYSTEM_PROMPT,
 } from "@/lib/assessment-prompt"
 
-const OPENAI_API_URL = process.env.OPENAI_API_URL || "https://api.openai.com/v1/chat/completions"
+const OPENAI_API_URL = process.env.OPENAI_API_URL || "https://api.z.ai/api/paas/v4/chat/completions"
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini"
+const OPENAI_MODEL = process.env.OPENAI_MODEL || "glm-5-turbo"
 
 function generateSessionId(): string {
   return "asmt_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8)
