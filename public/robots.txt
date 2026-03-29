@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://meettheone.app/sitemap.xml
+Sitemap: https://meettheone.vercel.app/sitemap.xml
 
 User-agent: *
 Disallow: /chat/

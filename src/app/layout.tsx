@@ -3,7 +3,7 @@ import "./globals.css"
 import Providers from "@/components/Providers"
 import Navbar from "@/components/Navbar"
 
-const siteUrl = "https://meettheone.app"
+const siteUrl = "https://meettheone.vercel.app"
 
 export const metadata: Metadata = {
   title: "觅得 MeetTheOne | 心理学相亲交友平台 | 科学配对找到对的人",
